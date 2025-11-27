@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sampreethi Bokka | Data & AI Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Portfolio of Sampreethi Bokka – Data & AI Professional specializing in Data Engineering, Machine Learning, and Generative AI."
+  />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #050810;
+      --bg-alt: #080c18;
+      --accent: #28e0b9;
+      --accent-soft: rgba(40, 224, 185, 0.15);
+      --accent-strong: rgba(40, 224, 185, 0.3);
+      --text: #f7f7ff;
+      --muted: #a3a8c3;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --error: #ff5c7a;
+      --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.7);
+      --radius-xl: 18px;
+      --radius-xxl: 26px;
+      --nav-height: 70px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: radial-gradient(circle at top, #101629 0, #050810 55%);
+      color: var(--text);
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ===== Layout ===== */
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.3rem 4rem;
+    }
+
+    section {
+      padding: 6rem 0 0;
+    }
+
+    h1, h2, h3, h4 {
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== Top Gradient Ring ===== */
+
+    .halo {
+      position: fixed;
+      top: -120px;
+      right: -40px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(40, 224, 185, 0.14), transparent 70%);
+      filter: blur(4px);
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .halo-secondary {
+      position: fixed;
+      bottom: -160px;
+      left: -40px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(90, 100, 255, 0.16), transparent 70%);
+      filter: blur(6px);
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* ===== Navbar ===== */
+
+    .nav-wrap {
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(5, 8, 16, 0.9), rgba(5, 8, 16, 0.7));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.75rem 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-height);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .nav-orb {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #fff, #28e0b9 45%, #0a1720 70%);
+      box-shadow:
+        0 0 12px rgba(40, 224, 185, 0.7),
+        0 0 32px rgba(40, 224, 185, 0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 0.15rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, #28e0b9, #5f8bff);
+      transition: width 0.2s ease-out;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      padding: 0.35rem 0.95rem;
+      font-size: 0.86rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: radial-gradient(circle at top left, rgba(40, 224, 185, 0.4), rgba(5, 8, 16, 0.98));
+      box-shadow: 0 0 12px rgba(40, 224, 185, 0.4);
+    }
+
+    .nav-cta span {
+      font-size: 0.9rem;
+    }
+
+    .nav-cta svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      width: 28px;
+      height: 24px;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--text);
+      transition: transform 0.2s ease, opacity 0.2s ease, translate 0.2s ease;
+    }
+
+    .nav-toggle.open span:nth-child(1) {
+      transform: rotate(45deg);
+      translate: 0 9px;
+    }
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg);
+      translate: 0 -9px;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        position: absolute;
+        right: 1.3rem;
+        top: var(--nav-height);
+        flex-direction: column;
+        align-items: flex-end;
+        background: rgba(5, 8, 16, 0.98);
+        padding: 0.9rem 1.1rem;
+        border-radius: 14px;
+        border: 1px solid var(--border-subtle);
+        box-shadow: var(--shadow-soft);
+        transform-origin: top right;
+        transform: scale(0.9);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.16s ease, transform 0.16s ease;
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+    }
+
+    /* ===== Hero ===== */
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 3rem;
+      padding-top: 3rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), rgba(40, 224, 185, 0));
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #ffffff, #28e0b9, #9ca8ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.03rem;
+      color: var(--muted);
+      max-width: 34rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.1rem;
+    }
+
+    .badge-chip {
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), rgba(5, 8, 16, 0.96));
+      padding: 0.35rem 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .badge-chip .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(40, 224, 185, 0.7);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.8rem 1.4rem;
+      font-size: 0.93rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #28e0b9, #7c8cff);
+      color: #050810;
+      font-weight: 600;
+      box-shadow: 0 16px 40px rgba(40, 224, 185, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 60px rgba(40, 224, 185, 0.55);
+    }
+
+    .btn-ghost {
+      background: rgba(5, 8, 16, 0.9);
+      border-color: var(--border-subtle);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: rgba(10, 15, 30, 0.95);
+    }
+
+    .hero-secondary-note {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .hero-right {
+      position: relative;
+      justify-self: center;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top, rgba(40, 224, 185, 0.12), rgba(5, 8, 16, 0.98));
+      border-radius: var(--radius-xxl);
+      padding: 1.6rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow-soft);
+      width: 100%;
+      max-width: 320px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: conic-gradient(from 120deg, rgba(40, 224, 185, 0.15), transparent, rgba(90, 100, 255, 0.15), transparent);
+      opacity: 0.3;
+      mix-blend-mode: screen;
+      animation: spin 18s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tagline {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-role {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: rgba(5, 8, 16, 0.9);
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.2rem 0.65rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 0.9rem;
+    }
+
+    .metric {
+      flex: 1 1 40%;
+      min-width: 120px;
+    }
+
+    .metric-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .metric-sub {
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: -20px;
+      border-radius: 999px;
+      border: 1px dashed rgba(40, 224, 185, 0.25);
+      transform: rotate(-8deg);
+      opacity: 0.5;
+    }
+
+    .hero-floating-badge {
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      background: rgba(5, 8, 16, 0.96);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.65rem 0.8rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      box-shadow: var(--shadow-soft);
+      max-width: 160px;
+    }
+
+    .hero-floating-badge strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-floating-badge span {
+      font-family: "Fira Code", monospace;
+      font-size: 0.74rem;
+    }
+
+    /* ===== Section headings ===== */
+
+    .section-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 420px;
+    }
+
+    /* ===== About / Skills ===== */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.3rem;
+    }
+
+    .card {
+      background: rgba(5, 8, 16, 0.96);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    .about-text p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .about-highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .about-tag {
+      font-family: "Fira Code", monospace;
+      font-size: 0.78rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(135deg, rgba(40, 224, 185, 0.18), rgba(5, 8, 16, 0.98));
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .skill-group-title {
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .skill-chip {
+      font-size: 0.78rem;
+      padding: 0.23rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      background: rgba(10, 14, 28, 0.98);
+    }
+
+    /* ===== Projects ===== */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    @media (max-width: 880px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-card {
+      background: radial-gradient(circle at top left, var(--accent-soft), rgba(5, 8, 16, 0.99));
+      border-radius: var(--radius-xl);
+      padding: 1.2rem 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      min-height: 190px;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .project-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .project-tech {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: "Fira Code", monospace;
+    }
+
+    .project-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.82rem;
+    }
+
+    .project-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(5, 8, 16, 0.9);
+      border: 1px solid rgba(40, 224, 185, 0.5);
+    }
+
+    .project-metric {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ===== Experience / Education ===== */
+
+    .timeline {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+      gap: 1.3rem;
+    }
+
+    @media (max-width: 880px) {
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .timeline-list {
+      border-left: 1px solid rgba(255, 255, 255, 0.12);
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.35rem;
+      top: 0.3rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(40, 224, 185, 0.8);
+    }
+
+    .timeline-role {
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .timeline-org {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .timeline-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0.15rem 0 0.4rem;
+    }
+
+    .timeline-points {
+      font-size: 0.86rem;
+      color: var(--muted);
+      padding-left: 1rem;
+    }
+
+    .timeline-points li {
+      margin-bottom: 0.25rem;
+    }
+
+    .edu-card {
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .edu-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .edu-meta {
+      font-size: 0.86rem;
+    }
+
+    /* ===== Contact ===== */
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1.6rem;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-right {
+        order: -1;
+      }
+      .two-col,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-text {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .contact-text p + p {
+      margin-top: 0.5rem;
+    }
+
+    .contact-ways {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .contact-pill {
+      font-size: 0.84rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(9, 13, 26, 0.96);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .contact-pill span {
+      font-family: "Fira Code", monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .field label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .field input,
+    .field textarea {
+      background: rgba(5, 8, 16, 0.96);
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.55rem 0.9rem;
+      font-size: 0.85rem;
+      color: var(--text);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .field textarea {
+      resize: vertical;
+      border-radius: 16px;
+      min-height: 90px;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(40, 224, 185, 0.5);
+      background: rgba(8, 13, 26, 1);
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .btn-submit {
+      align-self: flex-start;
+      margin-top: 0.3rem;
+    }
+
+    /* ===== Footer ===== */
+
+    footer {
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== Scroll reveal ===== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Typing effect cursor */
+    .typing {
+      border-right: 2px solid var(--accent);
+      padding-right: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    /* Small tweaks */
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 2.1rem;
+      }
+      .hero {
+        padding-top: 2rem;
+      }
+      section {
+        padding-top: 4.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="halo"></div>
+  <div class="halo-secondary"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="nav-wrap">
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-orb"></div>
+        <span>SB / Data & AI</span>
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/Sampreethi66" target="_blank" rel="noopener" class="nav-cta">
+          <span>GitHub</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path fill="currentColor" d="M4.5 3h8.25a.75.75 0 0 1 .75.75v8.25a.75.75 0 0 1-1.28.53l-2.65-2.65-2.32 2.32a.75.75 0 0 1-1.28-.53V4.5H3.75a.75.75 0 0 1 0-1.5H4.5z"/>
+          </svg>
+        </a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!-- ===== HERO ===== -->
+    <section id="top" class="hero">
+      <div class="hero-left reveal">
+        <div class="hero-kicker">Data · AI · Engineering</div>
+        <h1 class="hero-title">
+          Hi, I'm <span>Sampreethi Bokka</span>.
+        </h1>
+        <p class="hero-subtitle">
+          I build <strong>data pipelines</strong>, <strong>ML systems</strong>, and
+          <strong>AI-powered applications</strong> that turn raw data into intelligent products –
+          from streaming risk scoring to GenAI assistants.
+        </p>
+
+        <div class="hero-badges">
+          <div class="badge-chip">
+            <span class="dot"></span> Data Engineering · Snowflake · Databricks
+          </div>
+          <div class="badge-chip">
+            <span class="dot"></span> Machine Learning · Deep Learning · NLP
+          </div>
+          <div class="badge-chip">
+            <span class="dot"></span> GenAI · LLMs · RAG Systems
+          </div>
+        </div>
+
+        <div class="hero-cta-row">
+          <a href="YOUR_RESUME_LINK_HERE" class="btn-primary" target="_blank" rel="noopener">
+            View Resume
+          </a>
+          <a href="#projects" class="btn-ghost">
+            View Projects ↓
+          </a>
+        </div>
+        <div class="hero-secondary-note">
+          Open to Data / ML / AI roles · Dallas · Hybrid / Remote
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <div class="hero-card">
+          <div class="hero-orbit"></div>
+          <div class="hero-card-inner">
+            <div class="hero-tagline">Live status</div>
+            <div class="hero-role typing" id="typingRole"></div>
+            <div class="hero-pill">
+              <span>Now</span>
+              <span>Building portfolio-ready AI & data projects</span>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <div class="metric-label">End-to-end projects</div>
+                <div class="metric-value">10+</div>
+                <div class="metric-sub">Banking · Insurance · IoT · Forecasting</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Tech stack</div>
+                <div class="metric-value">Python · SQL</div>
+                <div class="metric-sub">Snowflake · Spark · TensorFlow · LangChain</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-floating-badge">
+            <strong>Recent focus</strong>
+            <span>Streaming ML · Model Explainability · GenAI for banking</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT & SKILLS ===== -->
+    <section id="about">
+      <div class="section-label">About</div>
+      <div class="section-title-row">
+        <h2 class="section-title">Who I am & how I think about data</h2>
+        <p class="section-sub">
+          I combine <strong>data engineering foundations</strong> with
+          <strong>applied machine learning</strong> and <strong>business context</strong> to build systems
+          that are not just accurate – but reliable, explainable, and deployable.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div class="card about-text reveal">
+          <p>
+            I recently completed my M.S. in <span class="about-highlight">Business Analytics & Artificial Intelligence</span>
+            at The University of Texas at Dallas, where I focused on
+            <strong>ML pipelines, time series forecasting, NLP, deep learning, and cloud data platforms</strong>.
+          </p>
+          <p>
+            My projects span <strong>financial risk scoring</strong>, <strong>GenAI banking assistants</strong>,
+            <strong>IoT predictive maintenance</strong>, and <strong>econometrics for policy analysis</strong>.
+          </p>
+          <p>
+            I enjoy taking a problem from <strong>raw messy data → clean features → trained models →
+            APIs / dashboards → monitoring</strong>, so the solution is production-ready, not just a notebook.
+          </p>
+
+          <div class="about-tags">
+            <div class="about-tag">Azure · AWS · GCP</div>
+            <div class="about-tag">Snowflake · Databricks · Spark</div>
+            <div class="about-tag">TensorFlow · Keras · Sklearn</div>
+            <div class="about-tag">LangChain · LLMs · RAG</div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="skills-grid">
+            <div>
+              <div class="skill-group-title">Data & Engineering</div>
+              <div class="skill-chips">
+                <span class="skill-chip">Python · SQL</span>
+                <span class="skill-chip">Snowflake · Databricks</span>
+                <span class="skill-chip">Airflow (concepts)</span>
+                <span class="skill-chip">ETL · Data Modeling</span>
+                <span class="skill-chip">Spark (PySpark)</span>
+              </div>
+            </div>
+            <div>
+              <div class="skill-group-title">ML & AI</div>
+              <div class="skill-chips">
+                <span class="skill-chip">Classification · Regression</span>
+                <span class="skill-chip">Time Series Forecasting</span>
+                <span class="skill-chip">CNNs · RNNs · LSTMs</span>
+                <span class="skill-chip">NLP · Transformers</span>
+                <span class="skill-chip">SHAP · Explainability</span>
+              </div>
+            </div>
+            <div>
+              <div class="skill-group-title">GenAI & Apps</div>
+              <div class="skill-chips">
+                <span class="skill-chip">LLMs · RAG</span>
+                <span class="skill-chip">LangChain</span>
+                <span class="skill-chip">API design</span>
+              </div>
+            </div>
+            <div>
+              <div class="skill-group-title">Tools</div>
+              <div class="skill-chips">
+                <span class="skill-chip">Git · GitHub</span>
+                <span class="skill-chip">Docker (basics)</span>
+                <span class="skill-chip">VS Code · Jupyter</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <div class="section-label">Projects</div>
+      <div class="section-title-row">
+        <h2 class="section-title">Selected work</h2>
+        <p class="section-sub">
+          A snapshot of projects where I connected <strong>data engineering</strong>,
+          <strong>machine learning</strong>, and <strong>AI</strong> to real use cases.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card reveal">
+          <div class="project-tag">Banking · GenAI · RAG</div>
+          <h3 class="project-title">Jefferson Bank AI Assistant</h3>
+          <p class="project-desc">
+            Designed an AI assistant for a regional bank that answers customer questions using
+            RAG over policy documents, FAQs, and product sheets – with conversation grounding and
+            safety checks.
+          </p>
+          <p class="project-tech">
+            Python · LangChain · LLMs · Vector DB · REST API
+          </p>
+          <div class="project-footer">
+            <div class="project-links">
+              <a class="project-link" href="YOUR_GITHUB_LINK_1" target="_blank" rel="noopener">
+                Code
+              </a>
+              <a class="project-link" href="YOUR_DEMO_LINK_1" target="_blank" rel="noopener">
+                Demo
+              </a>
+            </div>
+            <div class="project-metric">
+              Designed for banking FAQs, product discovery & policy Q&A.
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card reveal">
+          <div class="project-tag">Insurance · Streaming ML</div>
+          <h3 class="project-title">GEICO Streaming Risk Scoring Pipeline</h3>
+          <p class="project-desc">
+            Built a conceptual pipeline where incoming claims events are scored in real time for
+            risk using a trained ML model, with SHAP-based explainability for underwriters.
+          </p>
+          <p class="project-tech">
+            PySpark · Kafka (concept) · MLflow (concept) · FastAPI · SHAP
+          </p>
+          <div class="project-footer">
+            <div class="project-links">
+              <a class="project-link" href="YOUR_GITHUB_LINK_2" target="_blank" rel="noopener">
+                Code
+              </a>
+              <a class="project-link" href="YOUR_DEMO_LINK_2" target="_blank" rel="noopener">
+                API Docs
+              </a>
+            </div>
+            <div class="project-metric">
+              Focused on feature engineering, risk scores & explainability.
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card reveal">
+          <div class="project-tag">IoT · Predictive Maintenance</div>
+          <h3 class="project-title">Walbrydge IoT Predictive Maintenance</h3>
+          <p class="project-desc">
+            Built an end-to-end pipeline to predict equipment failures using sensor data – including
+            ETL, feature engineering, model training, and an inference API.
+          </p>
+          <p class="project-tech">
+            Python · Pandas · Sklearn · FastAPI · Docker (dev)
+          </p>
+          <div class="project-footer">
+            <div class="project-links">
+              <a class="project-link" href="YOUR_GITHUB_LINK_3" target="_blank" rel="noopener">
+                Code
+              </a>
+            </div>
+            <div class="project-metric">
+              Demonstrates structured ML pipeline & deployment-ready APIs.
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card reveal">
+          <div class="project-tag">ML · Time Series · NLP</div>
+          <h3 class="project-title">Stock Price & News Sentiment Modeling</h3>
+          <p class="project-desc">
+            Combined historical stock prices with news sentiment to explore how market narratives
+            relate to price movements, using ML and sequence models.
+          </p>
+          <p class="project-tech">
+            Python · yfinance · NLP · Sentiment Models · LSTM / ML
+          </p>
+          <div class="project-footer">
+            <div class="project-links">
+              <a class="project-link" href="YOUR_GITHUB_LINK_4" target="_blank" rel="noopener">
+                Notebook
+              </a>
+            </div>
+            <div class="project-metric">
+              Showcases time series, feature engineering & model comparison.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE & EDUCATION ===== -->
+    <section id="experience">
+      <div class="section-label">Experience</div>
+      <div class="section-title-row">
+        <h2 class="section-title">Background</h2>
+        <p class="section-sub">
+          A mix of academic projects, hands-on labs, and self-driven work focused on
+          <strong>data + AI</strong>.
+        </p>
+      </div>
+
+      <div class="timeline card reveal">
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <div class="timeline-role">Data & AI Projects (Portfolio)</div>
+            <div class="timeline-org">Self-driven & Academic</div>
+            <div class="timeline-meta">2023 – Present · Dallas, TX</div>
+            <ul class="timeline-points">
+              <li>Designed ML and GenAI projects for banking, insurance, IoT, and forecasting.</li>
+              <li>Implemented end-to-end workflows: data ingestion, feature engineering,
+                model training, evaluation, and deployment-ready APIs.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">Graduate Coursework · Data & AI</div>
+            <div class="timeline-org">UT Dallas · Business Analytics & AI</div>
+            <div class="timeline-meta">2023 – 2025</div>
+            <ul class="timeline-points">
+              <li>Applied Deep Learning (CNNs, RNNs, Transformers, LLMs).</li>
+              <li>Predictive Analytics, Econometrics, Time Series Forecasting.</li>
+              <li>Hands-on work with Snowflake, cloud data platforms, and ML workflows.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-title">M.S. in Business Analytics & Artificial Intelligence</div>
+          <div class="edu-meta">The University of Texas at Dallas · Graduated 2025</div>
+          <p>
+            Focus on <strong>Machine Learning</strong>, <strong>Deep Learning</strong>,
+            <strong>Cloud Data Platforms</strong>, and <strong>AI applications</strong>.
+          </p>
+          <p>
+            Built multiple course and independent projects across
+            <strong>finance, insurance, IoT, and policy analysis</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <div class="section-label">Contact</div>
+      <div class="section-title-row">
+        <h2 class="section-title">Let’s build something</h2>
+        <p class="section-sub">
+          I’m currently exploring opportunities in <strong>Data Science</strong>,
+          <strong>Data Engineering</strong>, and <strong>Applied AI</strong> – and I love talking
+          about real-world problems that need intelligent data systems.
+        </p>
+      </div>
+
+      <div class="card contact-card reveal">
+        <div class="contact-text">
+          <p>
+            The fastest way to reach me is email or LinkedIn. I’m happy to share code,
+            walk through architectures, or talk about how I would approach a specific problem in
+            your team.
+          </p>
+          <div class="contact-ways">
+            <div class="contact-pill">
+              📧
+              <span>YOUR_EMAIL@domain.com</span>
+            </div>
+            <a class="contact-pill" href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG" target="_blank" rel="noopener">
+              💼 <span>LinkedIn</span>
+            </a>
+            <a class="contact-pill" href="https://github.com/Sampreethi66" target="_blank" rel="noopener">
+              🧪 <span>GitHub</span>
+            </a>
+          </div>
+          <p class="form-note" style="margin-top: 1rem;">
+            You can also use the contact form (wired to your email service if you add one later).
+          </p>
+        </div>
+
+        <form class="contact-form" onsubmit="handleFakeSubmit(event)">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell me about your project or role..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-submit">Send message</button>
+          <div class="form-note">
+            Currently this is a front-end only demo – you can connect it later to
+            Formspree, EmailJS, or a custom API.
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div>© <span id="year"></span> · Built by Sampreethi Bokka · Dark mode by default 🖤</div>
+      <div class="footer-links">
+        <a href="#top">Back to top ↑</a>
+        <a href="https://github.com/Sampreethi66" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    navToggle.addEventListener("click", () => {
+      navToggle.classList.toggle("open");
+      navLinks.classList.toggle("open");
+    });
+
+    // Close nav on link click (mobile)
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navToggle.classList.remove("open");
+        navLinks.classList.remove("open");
+      });
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+    revealEls.forEach((el) => revealObserver.observe(el));
+
+    // Typing effect for hero role
+    const typingEl = document.getElementById("typingRole");
+    const roles = [
+      "Data & AI Professional",
+      "Data Engineer · ML Developer",
+      "Building portfolio-ready AI systems"
+    ];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeLoop() {
+      const current = roles[roleIndex];
+      if (!deleting) {
+        typingEl.textContent = current.slice(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(typeLoop, 1500);
+          return;
+        }
+      } else {
+        typingEl.textContent = current.slice(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          deleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      }
+      const delay = deleting ? 40 : 70;
+      setTimeout(typeLoop, delay);
+    }
+
+    if (typingEl) {
+      typeLoop();
+    }
+
+    // Fake form submit
+    function handleFakeSubmit(e) {
+      e.preventDefault();
+      alert("Thanks for reaching out! You can wire this form to Formspree, EmailJS, or your own backend.");
+      e.target.reset();
+    }
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
